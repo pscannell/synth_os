@@ -1,4 +1,6 @@
-# Organelle OS Program
+# Synth OS Program
+
+forked from [Organelle OS](https://github.com/critterandguitari/Organelle_OS)
 
 Provides menu interface for operating the Organelle, interfaces with hardware, launches patches, provides settings for midi, wifi, etc...
 
@@ -6,7 +8,7 @@ Provides menu interface for operating the Organelle, interfaces with hardware, l
 
 Mother assumes some things are in particular locations.
 
-```
+```sh
 USB_PATCHES="/usbdrive/Patches"
 SD_PATCHES="/sdcard/Patches"
 DEFAULT_PATCHES="/usbdrive/Patches"
