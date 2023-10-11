@@ -75,7 +75,11 @@ Serial::Serial()
     //char *portname = "/dev/tty.usbserial-A30013Jp";
     //serial_fd = open (portname, O_RDWR | O_NOCTTY | O_SYNC);
     //serial_fd = open("/dev/tty.usbserial-A30013Jp", O_RDWR | O_NOCTTY | O_NDELAY);
-    serial_fd = open("/dev/ttymxc0", O_RDWR | O_NOCTTY | O_NDELAY);
+    
+    // Stop ttyAMA0
+    // system("sudo systemctl stop serial-getty@ttyAMA0.service");
+    
+    serial_fd = open("/dev/serial0", O_RDWR | O_NOCTTY | O_NDELAY);
     if (serial_fd < 0)
     {
         printf("error %d opening %s: %s", errno, "/dev/whatever", strerror (errno));

@@ -271,11 +271,11 @@ void MainMenu::runPatch(const char* name, const char* arg) {
             std::string mother = getSystemFile(paths, "mother.pd");
             if (mother.length() == 0) {
                 mother = app.getFirmwareDir() + "/mother.pd";
-            } else if (isMotherPdCompatible(mother) == false) {
-                std::cerr << mother << " incompatible please review, using system mother.pd";
-                sprintf(buf2, "mv %s %s.review", mother.c_str(), mother.c_str());
-                system(buf2);
-            }
+            } //else if (isMotherPdCompatible(mother) == false) {
+            //     std::cerr << mother << " incompatible please review, using system mother.pd";
+            //     sprintf(buf2, "mv %s %s.review", mother.c_str(), mother.c_str());
+            //     system(buf2);
+            // }
 
             std::string optsfile = getSystemFile(paths, "pd-opts.txt");
             std::string opts;
@@ -283,13 +283,14 @@ void MainMenu::runPatch(const char* name, const char* arg) {
                 opts = getCmdOptions(optsfile);
             }
 
-            std::string args = "-rt ";
+            std::string args = "-rt";
             bool guimode = execScript("check-for-x.sh");
-            if (guimode) {
-                args += " -audiobuf 10";
-            } else {
-                args += " -nogui -audiobuf 6";
-            }
+            // if (guimode) {
+            //     args += " -audiobuf 10";
+            // } else {
+            //     args += " -nogui -audiobuf 4";
+            // }
+            args += " -nogui -audiobuf 10 -audiodev 3";
 
             args += std::string(" -path ") + app.getUserDir() + "/PdExtraLibs";
 
